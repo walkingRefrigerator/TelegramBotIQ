@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sautinsoft.pdffocus" Version="7.7.7.24" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="Telegram.Bot" Version="15.7.1" />
+    <PackageReference Include="TMDbLib" Version="1.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConvertPDF\ConvertPDF.csproj" />
+    <ProjectReference Include="..\MovieAPI\MovieAPI.csproj" />
+    <ProjectReference Include="..\ValuteAPI\ValuteAPI.csproj" />
+    <ProjectReference Include="..\WeatherAPI\WeatherAPI.csproj" />
+  </ItemGroup>
+
+</Project>
