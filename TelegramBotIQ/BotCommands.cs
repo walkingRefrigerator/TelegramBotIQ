@@ -448,7 +448,7 @@ namespace TelegramBotIQ
                     $"KP:<b>{movie.Rating.Kp}</b><br>" +
                     $"Imdb:<b>{movie.Rating.Imdb}</b><br>" +
                     $"Описание:<br>" +
-                    $"{movie.Description}");
+                    $"{movie.Description}", ParseMode.Html);
             }
         }
     }
