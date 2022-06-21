@@ -79,7 +79,7 @@ namespace TelegramBotIQ
 
                 case "/Movie":
 
-                    await Movies.GetMovies(bot, msg);
+                    await SendMovies(msg, bot);
 
                     break;
 
@@ -432,6 +432,24 @@ namespace TelegramBotIQ
             }
 
             await bot.SendTextMessageAsync(msg.Chat.Id, "Введено неверное имя файла");
+        }
+
+        public static async Task SendMovies(Message msg, TelegramBotClient bot)
+        {
+            var movies = await KinopoiskApi.GetMoviesAsync("2022");
+
+            foreach (var movie in movies.MoviesData)
+            {
+                var poster = new InputOnlineFile(movie.Poster.Url);
+
+                await bot.SendPhotoAsync(msg.Chat.Id, poster, $"<br>" +
+                    $"<b>{movie.Name} ({movie.AlternativeName})</b><br>" +
+                    $"Рейтинги" +
+                    $"KP:<b>{movie.Rating.Kp}</b><br>" +
+                    $"Imdb:<b>{movie.Rating.Imdb}</b><br>" +
+                    $"Описание:<br>" +
+                    $"{movie.Description}");
+            }
         }
     }
 }
