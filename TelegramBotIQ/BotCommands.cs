@@ -38,6 +38,17 @@ namespace TelegramBotIQ
         #endregion
 
         #region Ответ на текст
+
+        public static async Task MessageMovie(Message msg, TelegramBotClient bot)
+        {
+            var text = msg?.Text;
+
+            if (text == null)
+                return;
+
+            await SendMovies(msg, bot);
+        }
+
         public static async Task MessageReplyText(Message msg, TelegramBotClient bot, UserDB user)
         {
             var text = msg?.Text;
@@ -442,13 +453,12 @@ namespace TelegramBotIQ
             {
                 var poster = new InputOnlineFile(movie.Poster.Url);
 
-                await bot.SendPhotoAsync(msg.Chat.Id, poster, $"<br>" +
-                    $"<b>{movie.Name} ({movie.AlternativeName})</b><br>" +
-                    $"Рейтинги" +
-                    $"KP:<b>{movie.Rating.Kp}</b><br>" +
-                    $"Imdb:<b>{movie.Rating.Imdb}</b><br>" +
-                    $"Описание:<br>" +
-                    $"{movie.Description}", ParseMode.Html);
+                await bot.SendPhotoAsync(msg.Chat.Id, poster, @$"<b>{movie.Name} ({movie.AlternativeName})</b>
+Рейтинги 
+KP: <b>{movie.Rating.Kp}</b>
+Imdb: <b>{movie.Rating.Imdb}</b>
+Описание:
+{movie.Description}", ParseMode.Html);
             }
         }
     }

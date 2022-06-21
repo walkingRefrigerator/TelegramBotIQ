@@ -37,8 +37,8 @@ namespace TelegramBotIQ
             userDB = new UserDB();
             db = new DB();
 
-            botClient.OnMessage += Bot_OnStart;
-            botClient.OnCallbackQuery += Bot_OnCheck;
+            botClient.OnMessage += Bot_OnMessage;
+            botClient.OnCallbackQuery += Bot_OnCallbackQuery;
             //botClient.OnInlineQuery += Bot_OnInline;
 
         }
@@ -367,7 +367,7 @@ namespace TelegramBotIQ
                     break;
 
                 case MessageType.Text:
-                    await BotCommands.MessageReplyText(msg, botClient, userDB);
+                    await BotCommands.MessageMovie(msg, botClient);
                     break;
 
                 default:
