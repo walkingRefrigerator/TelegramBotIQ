@@ -79,7 +79,7 @@ namespace TelegramBotIQ
 
                 case "/Movie":
 
-                    await Movie.GetMovies(bot, msg);
+                    await Movies.GetMovies(bot, msg);
 
                     break;
 

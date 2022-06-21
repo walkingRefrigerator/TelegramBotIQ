@@ -9,4 +9,8 @@
     <PackageReference Include="TMDbLib" Version="1.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Api\" />
+  </ItemGroup>
+
 </Project>
