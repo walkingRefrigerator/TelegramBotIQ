@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Telegram.Bot" Version="15.7.1" />
-    <PackageReference Include="TMDbLib" Version="1.6.0" />
+    <Compile Remove="Data\Api\**" />
+    <EmbeddedResource Remove="Data\Api\**" />
+    <None Remove="Data\Api\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Api\" />
+    <PackageReference Include="Telegram.Bot" Version="15.7.1" />
+    <PackageReference Include="TMDbLib" Version="1.6.0" />
   </ItemGroup>
 
 </Project>

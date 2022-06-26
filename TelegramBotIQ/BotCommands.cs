@@ -43,6 +43,20 @@ namespace TelegramBotIQ
 
             switch (text)
             {
+                case "/start":
+
+                await bot.SendTextMessageAsync(msg.From.Id, @"Приветствую.
+Данный бот является мультимедийной платформой со множеством полезных функций.
+Также бот способен конвертировать <b>pdf</b> файлы, присылать афишу, выступать облачным диском, хранящий ваши документы/фото/ауди/видео.
+Для начала следует отправить боту любой документ, и бот его сохранит. 
+Позже вы сможете попросить наших ботов вам их прислать.
+Для вашей персональной безопасности вам следует зарегистрировать пользователя на нашем сервисе.
+Для этого стоит выбрать кнопку <i>'Регистрация'</i> и ввести логин и пароль.
+После создания аккаунта или если он уже есть, то надо выбрать кнопку.
+Напишите /command", ParseMode.Html, false, false, 0);
+
+                    break;
+
                 case "/command":
 
                     await bot.SendTextMessageAsync(msg.Chat.Id, @"Список команд:
@@ -51,13 +65,6 @@ namespace TelegramBotIQ
 /Menu - погода и курс валюты,
 /Movie - афиша фильмов
 ");
-                    break;
-
-
-                case "/Movie":
-
-                    await SendMovies(msg, bot);
-
                     break;
 
                 case "/Menu":
@@ -121,7 +128,7 @@ namespace TelegramBotIQ
 
         public static async Task SendMovies(Message msg, TelegramBotClient bot)
         {
-            var movies = await KinopoiskApi.GetMoviesAsync("2022");
+            var movies = await KinopoiskApi.GetMoviesAsync(msg.Text);
 
             foreach (var movie in movies.MoviesData)
             {
