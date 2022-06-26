@@ -8,13 +8,15 @@ namespace MovieAPI
 {
     public static class KinopoiskApi
     {
+        private static readonly string token = "WSFK9JT-K42MJN0-M95MQAV-A4WPKNP";
+
         public static async Task<Movies> GetMoviesAsync(string year)
         {
             var movies = new Movies();
 
             try
             {
-                var url = @$"https://api.kinopoisk.dev/movie?token=WSFK9JT-K42MJN0-M95MQAV-A4WPKNP&field=rating.kp&search=7-10&field=year&search={year}";
+                var url = @$"https://api.kinopoisk.dev/movie?token={token}&field=rating.kp&search=7-10&field=year&search={year}";
 
                 var client = new HttpClient();
                 var response = await client.GetAsync(url);
